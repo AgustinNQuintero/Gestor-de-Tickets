@@ -51,11 +51,13 @@ Gestor-de-Tickets/
 📄 usuarios.csv
 ```bash
 id,nombre_usuario,rango
-101,juanp,Usuario
-102,marial,Usuario
-103,carloss,Usuario
-2000,admin,Administrador
-3000,tecnico1,Técnico
+101,juan pablo Gozalez,Usuario
+102,Maria de los Angeles Rodriguez,Usuario
+103,Carlos Perez,Usuario
+2000,Agustin Quintero,Administrador
+3000,Luis Hernandez,Técnico
+3001,Enrique Martinez,Técnico
+3002,Ana Gomez,Técnico
 ```
 
 📄 tickets.csv (estructura)
