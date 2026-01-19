@@ -8,17 +8,17 @@ El proyecto simula un entorno real de soporte técnico, donde distintos tipos de
 
 El Gestor de Tickets permite:
 
-Crear tickets de soporte
+-Crear tickets de soporte
 
-Consultar tickets propios
+-Consultar tickets propios
 
-Visualizar todos los tickets del sistema
+-Visualizar todos los tickets del sistema
 
-Asignar tickets a técnicos
+-Asignar tickets a técnicos
 
-Visualizar tickets asignados a cada técnico
+-Visualizar tickets asignados a cada técnico
 
-Actualizar el estado de un ticket
+-Actualizar el estado de un ticket
 
 Toda la información se almacena en archivos CSV, evitando el uso de bases de datos para mantener el proyecto simple y enfocado en la lógica.
 
