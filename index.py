@@ -34,7 +34,8 @@ while True:
     elif id_usuario == 2000:
         print("\nSeleccione una opción:")
         print("1. Ver todos los tickets")
-        print("2. Salir")
+        print("2. Asignar ticket a técnico")
+        print("3. Salir")
 
         opcion = input("Ingrese el número de la opción deseada: ")
 
@@ -42,7 +43,7 @@ while True:
             logica.VerTodosLosTickets()
 
         elif opcion == "2":
-            print("Saliendo del sistema...")
+            logica.AsignarTicketATecnico()
             break
 
         else:
@@ -75,3 +76,5 @@ while True:
     else:
         print("❌ Usuario no reconocido")
         break
+
+
