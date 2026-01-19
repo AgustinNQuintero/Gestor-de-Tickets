@@ -1,6 +1,6 @@
 id_ticket,id_usuario,titulo,prioridad,problema,estado,tecnico_id,respuesta
 1,101,Error en la aplicación,Alta,La aplicación se cierra inesperadamente,Cerrado,3000,Se soluciona error de aplicacion
-2,102,Problema de red,Media,No se puede conectar a Internet,Abierto,3000,SIN RESPUESTA
+2,102,Problema de red,Media,No se puede conectar a Internet,Abierto,3001,SIN RESPUESTA
 3,103,Solicitud de información,Baja,Necesito información sobre el producto,Cerrado,3000,SIN RESPUESTA
-4,101,Error 404,Alta,Me figura un error 404 cuando ingreso a la pagina,Abierto,3000,SIN RESPUESTA
-5,101,Base de datos caida,Alta,La base de datos no funciona,Abierto,
+4,101,Error 404,Alta,Me figura un error 404 cuando ingreso a la pagina,Abierto,3002,SIN RESPUESTA
+5,101,Base de datos caida,Alta,La base de datos no funciona,Abierto,3001,SIN RESPUESTA
