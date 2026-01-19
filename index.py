@@ -3,12 +3,19 @@ import logica
 print("Bienvenidos al gestor de tickets")
 print("===============================")
 
-id_usuario = int(input("Ingrese su usuario: "))
+id_usuario = int(input("Ingrese su ID de usuario: "))
+usuario = logica.buscar_usuario_por_id(id_usuario)
+
+if not usuario:
+    print("❌ Usuario no encontrado")
+    exit()
+
+print(f"✅ Bienvenido {usuario['nombre_usuario']} ({usuario['rango']})")
 
 while True:
 
     # USUARIO NORMAL
-    if id_usuario == 101:
+    if usuario["rango"] == "Usuario":
         print("\nSeleccione una opción:")
         print("1. Crear un nuevo ticket")
         print("2. Consultar mis tickets")
@@ -31,7 +38,7 @@ while True:
 
 
     # ADMIN
-    elif id_usuario == 2000:
+    elif usuario["rango"] == "Administrador":
         print("\nSeleccione una opción:")
         print("1. Ver todos los tickets")
         print("2. Asignar ticket a técnico")
@@ -51,7 +58,7 @@ while True:
 
 
     # TECNICO
-    elif id_usuario == 3000:
+    elif usuario["rango"] == "Técnico":
         print("\nSeleccione una opción:")
         print("1. Ver tickets asignados")
         print("2. Actualizar estado de ticket")
@@ -60,10 +67,10 @@ while True:
         opcion = input("Ingrese el número de la opción deseada: ")
 
         if opcion == "1":
-            logica.ver_tickets_asignados()
+            logica.ver_tickets_asignados(id_usuario)
 
         elif opcion == "2":
-            logica.actualizar_estado_de_ticket()
+            logica.actualizar_estado_de_ticket(id_usuario)
 
         elif opcion == "3":
             print("Saliendo del sistema...")

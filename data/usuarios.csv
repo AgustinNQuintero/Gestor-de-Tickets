@@ -1,6 +1,6 @@
-id,nombre_usuario,rango 
+id,nombre_usuario,rango
 101,juanp,Usuario
-102,marial,Usuario  
+102,marial,Usuario
 103,carloss,Usuario
 2000,admin,Administrador
 3000,tecnico1,Técnico

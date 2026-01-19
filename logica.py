@@ -4,6 +4,19 @@ RUTA_CSV = "data/tickets.csv"
 RUTA_USUARIOS_CSV = "data/usuarios.csv"
 ###User functions
 
+
+def buscar_usuario_por_id(id_usuario):
+    with open(RUTA_USUARIOS_CSV, mode="r", encoding="utf-8") as archivo:
+        reader = csv.DictReader(archivo)
+
+        for fila in reader:
+            fila = {k.strip(): v.strip() for k, v in fila.items()}
+
+            if int(fila["id"]) == id_usuario:
+                return fila
+
+    return None
+
 def generar_id_ticket():
     try:
         with open(RUTA_CSV, mode="r", encoding="utf-8") as archivo:
@@ -89,8 +102,8 @@ def ConsultaTickets(id_usuario):
             if int(fila[1]) == id_usuario:
                 print(
                     f"ID Ticket: {fila[0]} | "
-                    f"Título: {fila[3]} | "
-                    f"Prioridad: {fila[2]} | "
+                    f"Título: {fila[2]} | "
+                    f"Prioridad: {fila[3]} | "
                     f"Problema: {fila[4]} | "
                     f"Estado: {fila[5]} | "
                     f"Técnico: {fila[6] or 'Sin asignar'} | "
@@ -172,11 +185,83 @@ def AsignarTicketATecnico():
 
 ###Tecnico functions
 
-def ver_tickets_asignados():
-    print("Mostrando tickets asignados al técnico (pendiente de implementar)")
+def ver_tickets_asignados(id_usuario):
+    with open(RUTA_CSV, mode="r", encoding="utf-8") as archivo:
+        reader = csv.reader(archivo)
+        next(reader)  # salta encabezado
+        encontrados = False
+
+        for fila in reader:
+            if len(fila) < 8:
+                continue  # evita filas corruptas
+
+            if fila[6] != "" and int(fila[6]) == id_usuario:
+                print(
+                    f"ID Ticket: {fila[0]} | "
+                    f"Título: {fila[3]} | "
+                    f"Prioridad: {fila[2]} | "
+                    f"Problema: {fila[4]} | "
+                    f"Estado: {fila[5]} | "
+                    f"Técnico: {fila[6]} | "
+                    f"Respuesta: {fila[7] or 'Sin respuesta'}"
+                )
+                encontrados = True
+
+        if not encontrados:
+            print("📭 No tenés tickets asignados.")
 
 
-def actualizar_estado_de_ticket():
-    ticket_id = int(input("Ingrese el ID del ticket a actualizar: "))
-    nuevo_estado = input("Ingrese el nuevo estado del ticket: ")
-    print(f"Ticket {ticket_id} actualizado a estado: {nuevo_estado} (pendiente de guardar)")
+def actualizar_estado_de_ticket(id_usuario):
+    tickets = []
+
+    with open(RUTA_CSV, mode="r", encoding="utf-8") as archivo:
+        reader = csv.reader(archivo)
+        header = next(reader)
+        tickets.append(header)
+
+        for fila in reader:
+            tickets.append(fila)
+
+    print("\n📋 Tus tickets asignados:")
+    for fila in tickets[1:]:
+        if fila[6] and int(fila[6]) == id_usuario:
+            print(f"ID Ticket: {fila[0]} | Estado: {fila[5]} | Título: {fila[3]}")
+
+    ticket_id = input("\nIngrese el ID del ticket a actualizar: ")
+
+    encontrado = False
+
+    for fila in tickets[1:]:
+        if fila[0] == ticket_id and fila[6] == str(id_usuario):
+            print("\nSeleccione nuevo estado:")
+            print("1. Abierto")
+            print("2. En proceso")
+            print("3. Cerrado")
+
+            opcion = input("Opción: ")
+
+            if opcion == "1":
+                fila[5] = "Abierto"
+            elif opcion == "2":
+                fila[5] = "En proceso"
+            elif opcion == "3":
+                fila[5] = "Cerrado"
+            else:
+                print("❌ Opción inválida")
+                return
+
+            fila[7] = input("Ingrese respuesta del técnico: ")
+            encontrado = True
+            break
+
+    if not encontrado:
+        print("❌ Ticket no encontrado o no asignado a usted")
+        return
+
+    with open(RUTA_CSV, mode="w", newline="", encoding="utf-8") as archivo:
+        writer = csv.writer(archivo)
+        writer.writerows(tickets)
+
+    print("✅ Ticket actualizado con éxito")
+
+    
