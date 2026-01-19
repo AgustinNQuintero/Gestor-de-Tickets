@@ -1,0 +1,4 @@
+id_usuario,prioridad,titulo,descripcion,estado
+101,Alta,Error en la aplicación,La aplicación se cierra inesperadamente,Abierto
+102,Media,Problema de red,No se puede conectar a Internet,Abierto
+103,Baja,Solicitud de información,Necesito información sobre el producto,Cerrerrado
