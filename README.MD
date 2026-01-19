@@ -48,7 +48,6 @@ Gestor-de-Tickets/
 ```
 
 🗂️ Archivos CSV
-📄 usuarios.csv
 ```bash
 id,nombre_usuario,rango
 101,juan pablo Gozalez,Usuario
