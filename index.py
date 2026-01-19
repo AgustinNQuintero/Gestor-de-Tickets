@@ -1,3 +1,5 @@
+import logica 
+
 print ("Bienvenidos al gestor de tickets")
 print ("Seleccione una opción:")
 print ("1. Crear un nuevo ticket")
@@ -8,8 +10,7 @@ opcion=input ("Ingrese el número de la opción deseada: ")
 
 while True:  
     if opcion == "1":
-        print("Creando un nuevo ticket...")
-        # Lógica para crear un nuevo ticket
+        crear_ticket = logica.CrearTicket()
     elif opcion == "2":
         print("Mostrando tickets existentes...")
         # Lógica para ver tickets existentes
